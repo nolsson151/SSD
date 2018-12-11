@@ -1,24 +1,18 @@
 package com.models;
 
-import com.utils.Password;
-
 public class User {
 	
 	private String fName;
 	private String lName;
 	private String email;
 	private String pass;
-	private String salt;
-	
-	public User() {
-		
-	}
-	
+
 	public User(String fName, String lName, String email, String pass) {
+		super();
 		this.fName = fName;
 		this.lName = lName;
 		this.email = email;
-		this.pass = Password.createHash(pass);
+		this.pass = pass;
 	}
 
 	public String getfName() {
@@ -53,23 +47,14 @@ public class User {
 		this.pass = pass;
 	}
 
-	public String getSalt() {
-		return salt;
-	}
-
-	public void setSalt(String salt) {
-		this.salt = salt;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((email == null) ? 43 : email.hashCode());
-		result = prime * result + ((fName == null) ? 43 : fName.hashCode());
-		result = prime * result + ((lName == null) ? 43 : lName.hashCode());
-		result = prime * result + ((pass == null) ? 43 : pass.hashCode());
-		result = prime * result + ((salt == null) ? 43 : salt.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((fName == null) ? 0 : fName.hashCode());
+		result = prime * result + ((lName == null) ? 0 : lName.hashCode());
+		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
 		return result;
 	}
 
@@ -102,18 +87,14 @@ public class User {
 				return false;
 		} else if (!pass.equals(other.pass))
 			return false;
-		if (salt == null) {
-			if (other.salt != null)
-				return false;
-		} else if (!salt.equals(other.salt))
-			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "User [fName=" + fName + ", lName=" + lName + ", email=" + email + ", pass=" + pass + ", salt=" + salt
-				+ "]";
+		return "User [fName=" + fName + ", lName=" + lName + ", email=" + email + ", pass=" + pass + "]";
 	}
+	
+	
 
 }

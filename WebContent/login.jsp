@@ -10,12 +10,13 @@
 <jsp:include page="header.html"></jsp:include>
 
 
+
 	<form action="Login" method="post">
 		<p>Enter email: <input type="email" name="email" required>
-		<p>Enter password: <input type="password" name="password" required>
-	
+		<p>Enter password: <input type="password" name="password" required>	
 	
 		<input type="submit" value="Login">
+		
 	</form>
 
 </body>

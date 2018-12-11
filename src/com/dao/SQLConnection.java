@@ -13,19 +13,18 @@ public class SQLConnection {
     private static final String db = "ssd";
     private static final String connectionString = "jdbc:mysql://" + servername + ":" + port + "/" + db;
     
-    
     public Connection provide() {
         try {
-
-            // LOAD THE MYSQL DRIVER
-            Class.forName("com.mysql.cj.jdbc.Driver");
+        	Class.forName("com.mysql.cj.jdbc.Driver");
 
             return DriverManager.getConnection(connectionString, user, pass);
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } 
+        catch (SQLException | ClassNotFoundException e) {
             throw new SQLConnectionException(e);
         }
     }
+    
     public class SQLConnectionException extends RuntimeException {
     	SQLConnectionException(Exception e) {super(e);}
     }

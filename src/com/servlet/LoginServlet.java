@@ -18,8 +18,6 @@ import com.dao.LoginDAO;
 @WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	
-
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String email = request.getParameter("email");
@@ -34,8 +32,9 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("home.jsp");
 			try {
 				dao.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
+			} 
+			catch (SQLException e) {
+				System.out.println("SQL error, send help!");
 			}
 		}
 		else {
@@ -48,6 +47,3 @@ public class LoginServlet extends HttpServlet {
 		}
 	}
 }
-
-
-

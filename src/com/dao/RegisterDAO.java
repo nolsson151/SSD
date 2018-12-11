@@ -11,9 +11,6 @@ public class RegisterDAO extends DAOBase{
 	String isUser = "select * from users where email=?";
 	String newUser = "insert into users(fname, lname, email, pass) values(?,?,?,?)";
 	
-
-	
-	
 	public RegisterDAO() {
 		super();
 	}
@@ -38,14 +35,16 @@ public class RegisterDAO extends DAOBase{
 		
 		return false;
 	}
-	public boolean registerNewUser(User user) {
+	public boolean registerNewUser(String fName, String lName, String email, String pass) {
 		
 		try (PreparedStatement ps = getConnection().prepareStatement(newUser)) {
 
-            ps.setString(1, user.getfName());
-            ps.setString(2, user.getlName());
-            ps.setString(3, user.getEmail());
-            ps.setString(4, user.getPass());
+            ps.setString(1, fName);
+            ps.setString(2, lName);
+            ps.setString(3, email);
+            ps.setString(4, pass);
+            
+       
             int count = ps.executeUpdate();
            
 
@@ -70,7 +69,7 @@ public class RegisterDAO extends DAOBase{
 		String[] inputs = {user.getfName(),user.getlName(),user.getEmail(), user.getPass()};
 		
 		for(String s : inputs) {
-			if(s.length() == 0) {
+			if(s.length() == 0 && s.isEmpty()) {
 			return true;
 			
 			}	
